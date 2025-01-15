@@ -1,0 +1,111 @@
+/*Use the shortcode [ecs-list-events thumb='true' thumbsize='large'] after installing The Events Calendar and The Events Calendar Shortcode & Block plugins*/
+/* Blog style events */
+
+
+/* 1. Reset Default List Styles */
+.ecs-event-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 20px; /* Space between cards */
+  padding: 0;
+  margin: 0;
+  list-style: none; /* Remove default bullet points */
+}
+
+/* 2. Card Styling */
+.ecs-event {
+  background-color: #fff; /* White background */
+  border: 1px solid #e0e0e0; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden; /* Clip content within the card */
+  display: flex;
+  flex-direction: column; /* Arrange child elements vertically */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effects */
+}
+
+/* 3. Image Styling with Rounded Top Corners */
+.ecs-event img {
+  width: 100%; /* Full width of the card */
+  height: 300px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-top-left-radius: 8px; /* Rounded top-left corner */
+  border-top-right-radius: 8px; /* Rounded top-right corner */
+}
+
+/* 4. Rearranging Elements Using Flex Order */
+.ecs-event > a {
+  order: 1; /* Image link first */
+}
+
+.ecs-event > .duration.time {
+  order: 2; /* Date and time next */
+  padding: 15px; /* Add padding for spacing */
+	color: #000;
+	font-weight: 600;
+	text-align: left;
+}
+
+.ecs-event > .entry-title.summary {
+  order: 3; /* Event title last */
+  padding: 15px; /* Add padding for spacing */
+  display: flex;
+  align-items: center; /* Vertically center icon and text */
+	text-align: left;
+}
+
+/* 5. Adding Calendar Icon Before the Date Using Unicode Emoji */
+.ecs-event .tribe-event-date-start::before {
+  content: "📅"; /* Calendar Emoji */
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 1em; /* Adjust icon size as needed */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 6. Adding Location Icon Before the Event Title Using Unicode Emoji */
+.ecs-event .entry-title.summary::before {
+  content: "📍"; /* Location Pin Emoji */
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 1em; /* Adjust icon size as needed */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 7. Hover Effects for Interactivity */
+.ecs-event:hover {
+  transform: translateY(-5px); /* Slight upward movement */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.ecs-event .entry-title.summary a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.ecs-event .entry-title.summary a:hover {
+  color: #007BFF; /* Change color on hover */
+}
+
+/* 8. Responsive Design */
+
+/* Two columns on medium screens */
+@media (max-width: 1200px) {
+  .ecs-event-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Single column on small screens */
+@media (max-width: 800px) {
+  .ecs-event-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ecs-event img {
+    height: 200px; /* Smaller image on mobile */
+  }
+}
